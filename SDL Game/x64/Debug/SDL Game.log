@@ -1,0 +1,12 @@
+﻿  Game.cpp
+c:\users\vlad\source\repos\sdl game\sdl game\ecs.h(69): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+  c:\users\vlad\source\repos\sdl game\sdl game\game.cpp(58): note: see reference to function template instantiation 'T &Entity::addComponent<TransformComponent,int,int>(int &&,int &&)' being compiled
+          with
+          [
+              T=TransformComponent
+          ]
+  SDL Game.vcxproj -> C:\Users\Vlad\source\repos\SDL Game\x64\Debug\SDL Game.exe
