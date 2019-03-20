@@ -1,5 +1,13 @@
 #include "Vector2D.h"
 
+eVector2DType DefaultVector2DType = Position;
+
+Vector2D::Vector2D() : x(0.0f), y(0.0f), m_type(DefaultVector2DType) { }
+Vector2D::Vector2D(eVector2DType vType) : x(0.0f), y(0.0f), m_type(vType) { }
+Vector2D::Vector2D(float ix, float iy) : x(ix), y(iy), m_type(DefaultVector2DType) { }
+Vector2D::Vector2D(float ix, float iy, eVector2DType vType) : x(ix), y(iy), m_type(vType) { }
+
+
 Vector2D& Vector2D::Add(const Vector2D& oVec)
 {
 	this->x += oVec.x;

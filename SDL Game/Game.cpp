@@ -10,11 +10,19 @@ bool Fullscreen = false;
 
 unsigned long long Game::loopCounter = 0;
 bool Game::rendererActive = false;
+SDL_Event Game::m_event;
+std::vector<ColliderComponent*> Game::m_colliders;
+
 SDL_Renderer* Game::m_renderer = nullptr;
 Map* stage = nullptr;
 
 EntityManager manager;
 auto& player(manager.addEntity());
+auto& wall(manager.addEntity());
+
+auto& tile1(manager.addEntity());
+auto& tile2(manager.addEntity());
+auto& tile3(manager.addEntity());
 
 Game::Game()
 {
@@ -54,9 +62,16 @@ void Game::init(const char* i_title, int i_x, int i_y, int i_w, int i_h, bool fu
 
 		Game::rendererActive = true;
 
-		stage = new Map();
-		player.addComponent<TransformComponent>(100, 500);
+		Map::LoadMap("Assets/map.map", 20, 25);
+
+		player.addComponent<TransformComponent>(10.0f, 10.0f, 32, 32, 2);
 		player.addComponent<SpriteComponent>("Assets/wolfie.png");
+		player.addComponent<KeyboardController>();
+		player.addComponent<ColliderComponent>("player");
+
+		wall.addComponent<TransformComponent>(250.0f, 300.0f, 300, 20, 1);
+		wall.addComponent<SpriteComponent>("Assets/dirt.png");
+		wall.addComponent<ColliderComponent>("wall");
 
 		m_state = Created;
 
@@ -91,8 +106,6 @@ void Game::run()
 		update();
 		render();
 
-		//std::cout << "Game at loop: " << loopCounter << std::endl;
-
 		break;
 	}
 	case ShuttingDown:
@@ -109,10 +122,9 @@ void Game::run()
 
 void Game::handleEvents()
 {
-	SDL_Event sdlEvent;
-	SDL_PollEvent(&sdlEvent);
+	SDL_PollEvent(&m_event);
 
-	switch (sdlEvent.type)
+	switch (m_event.type)
 	{
 	case SDL_QUIT:
 		quit();
@@ -129,20 +141,13 @@ void Game::update()
 	manager.refresh();
 	manager.update();
 
-	player.getComponent<TransformComponent>() += Vector2D(5.0f, 0.0f);
-
-	if (player.getComponent<TransformComponent>().GetX() > 150)
-	{
-		player.getComponent<SpriteComponent>().SetTexture("Assets/enemy.png");
-	}
+	Collision::CheckForCollisions(m_colliders);
 }
 
 void Game::render()
 {
 	SDL_RenderClear(m_renderer);
 
-	//render the stuff here
-	stage->DrawMap();
 	manager.draw();
 
 	SDL_RenderPresent(m_renderer);
@@ -166,4 +171,10 @@ void Game::quit()
 	}
 
 	SDL_Quit();
+}
+
+void Game::AddTile(int tileType, int x, int y)
+{
+	auto& tile(manager.addEntity());
+	tile.addComponent<TileComponent>(x, y, 32, 32, tileType);
 }

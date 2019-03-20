@@ -8,7 +8,7 @@
 class SpriteComponent : public Component
 {
 private:
-	TransformComponent* m_transformPos;
+	TransformComponent* m_transform;
 	SDL_Texture* m_texture;
 
 	SDL_Rect srcRect, destRect;
@@ -19,8 +19,11 @@ public:
 		m_texture = TextureManager::LoadTexture(pathToTexture);
 	}
 
-	SpriteComponent() = default;
-	~SpriteComponent() = default;
+	~SpriteComponent()
+	{
+		if (m_texture)
+			SDL_DestroyTexture(m_texture);
+	}
 
 	void SetTexture(const char* pathToTexture)
 	{
@@ -31,17 +34,20 @@ public:
 
 	void init() override 
 	{
-		m_transformPos = &(m_entity->getComponent<TransformComponent>());
+		m_transform = &(m_entity->getComponent<TransformComponent>());
 
 		srcRect.x = srcRect.y = 0;
-		srcRect.h = srcRect.w = 32;
-		destRect.h = destRect.w = 32;
+
+		srcRect.h = m_transform->GetHeight();
+		srcRect.w = m_transform->GetWidth();
 	}
 
 	void update() override
 	{
-		destRect.x = (int)m_transformPos->GetX();
-		destRect.y = (int)m_transformPos->GetY();
+		destRect.x = static_cast<int>(m_transform->GetX());
+		destRect.y = static_cast<int>(m_transform->GetY());
+		destRect.h = m_transform->GetHeight() * m_transform->GetScale();
+		destRect.w = m_transform->GetWidth() * m_transform->GetScale();
 	}
 
 	void draw() override

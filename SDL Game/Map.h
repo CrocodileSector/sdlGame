@@ -2,8 +2,6 @@
 
 #include "Game.h"
 
-#include <vector>
-
 class Map
 {
 public:
@@ -11,20 +9,7 @@ public:
 	Map();
 	~Map();
 
-	void LoadMap(int defaultMap[20][25]);
-	void DrawMap();
+	static void LoadMap(std::string mapFile, int sizeX, int sizeY);
 
 private:
-
-	enum eMapTextureTypes
-	{
-		WATER = 0,
-		DIRT,
-		GRASS
-	};
-
-	std::vector<SDL_Texture*> m_textures;
-	SDL_Rect srcRect, dstRect;
-
-	int map[20][25];
 };

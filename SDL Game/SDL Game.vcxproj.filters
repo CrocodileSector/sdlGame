@@ -60,6 +60,21 @@
     <ClInclude Include="TransformComponent.h">
       <Filter>Source Files\Headers\Entity/Component</Filter>
     </ClInclude>
+    <ClInclude Include="KeyboardController.h">
+      <Filter>Source Files\Headers\Entity/Component</Filter>
+    </ClInclude>
+    <ClInclude Include="ColliderComponent.h">
+      <Filter>Source Files\Headers\Entity/Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>Source Files\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TileComponent.h">
+      <Filter>Source Files\Headers\Entity/Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Defines.h">
+      <Filter>Source Files\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\wolfsheet1.png">
@@ -101,6 +116,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\wolfsheetsSource.psd">
+      <Filter>Source Files\Assets</Filter>
+    </None>
+    <None Include="Assets\map.map">
       <Filter>Source Files\Assets</Filter>
     </None>
   </ItemGroup>

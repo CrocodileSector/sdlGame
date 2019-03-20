@@ -1,12 +1,7 @@
 ﻿  Game.cpp
-c:\users\vlad\source\repos\sdl game\sdl game\ecs.h(69): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
-          with
-          [
-              _Ty=int
-          ]
-  c:\users\vlad\source\repos\sdl game\sdl game\game.cpp(58): note: see reference to function template instantiation 'T &Entity::addComponent<TransformComponent,int,int>(int &&,int &&)' being compiled
-          with
-          [
-              T=TransformComponent
-          ]
+c:\users\vlad\source\repos\sdl game\sdl game\collision.h(5): warning C4099: 'Collision': type name first seen using 'class' now seen using 'struct'
+  c:\users\vlad\source\repos\sdl game\sdl game\collision.h(4): note: see declaration of 'Collision'
+c:\users\vlad\source\repos\sdl game\sdl game\tilecomponent.h(53): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlad\source\repos\sdl game\sdl game\tilecomponent.h(54): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlad\source\repos\sdl game\sdl game\collidercomponent.h(26): warning C4715: 'ColliderComponent::GetTransform': not all control paths return a value
   SDL Game.vcxproj -> C:\Users\Vlad\source\repos\SDL Game\x64\Debug\SDL Game.exe

@@ -1,11 +1,14 @@
 ﻿#pragma once
 
+#include "Defines.h"
+
 #include <iostream>
 #include <memory>
 #include <algorithm>
 #include <bitset>
 #include <array>
 #include <vector>
+#include <string>
 
 class Component;
 class Entity;
