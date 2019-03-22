@@ -15,14 +15,11 @@ private:
 public:
 	TransformComponent() = default;
 
-	TransformComponent(float x, float y) 
-		: m_pos(x, y), m_velocity(Velocity) { }
+	TransformComponent(int scale);
 
-	TransformComponent(int scale)
-		: m_pos(Position), m_velocity(Velocity), m_scale(scale) { }
+	TransformComponent(float x, float y);
 
-	TransformComponent(float x, float y, int h, int w, int s)
-		: m_pos(x, y), m_velocity(Velocity), m_height(h), m_width(w), m_scale(s) { }
+	TransformComponent(float x, float y, int h, int w, int s);
 
 	float GetX() const { return m_pos.GetX(); }
 	float GetY() const { return m_pos.GetY(); }
@@ -42,51 +39,15 @@ public:
 	void SetVelocityX(float val) { m_velocity.SetX(val); }
 	void SetVelocityY(float val) { m_velocity.SetY(val); }
 
-	void update() override
-	{
-		float xScalar = m_velocity.GetX() * speed;
-		float yScalar = m_velocity.GetY() * speed;
-		m_pos.Add(xScalar, yScalar);
-	}
+	void update();
 
-	TransformComponent& operator + (const Vector2D& vec) 
-	{
-		m_pos += vec;
-		return *this;
-	}
-	TransformComponent& operator - (const Vector2D& vec)
-	{
-		m_pos -= vec;
-		return *this;
-	}
-	TransformComponent& operator * (const Vector2D& vec)
-	{
-		m_pos *= vec;
-		return *this;
-	}
-	TransformComponent& operator / (const Vector2D& vec)
-	{
-		m_pos /= vec;
-		return *this;
-	}
-	TransformComponent& operator += (const Vector2D& vec)
-	{
-		m_pos += vec;
-		return *this;
-	}
-	TransformComponent& operator -= (const Vector2D& vec)
-	{
-		m_pos -= vec;
-		return *this;
-	}
-	TransformComponent& operator *= (const Vector2D& vec)
-	{
-		m_pos *= vec;
-		return *this;
-	}
-	TransformComponent& operator /= (const Vector2D& vec)
-	{
-		m_pos /= vec;
-		return *this;
-	}
+	TransformComponent& operator + (const Vector2D& vec);
+	TransformComponent& operator - (const Vector2D& vec);
+	TransformComponent& operator * (const Vector2D& vec);
+	TransformComponent& operator / (const Vector2D& vec);
+
+	TransformComponent& operator += (const Vector2D& vec);
+	TransformComponent& operator -= (const Vector2D& vec);
+	TransformComponent& operator *= (const Vector2D& vec);
+	TransformComponent& operator /= (const Vector2D& vec);
 };

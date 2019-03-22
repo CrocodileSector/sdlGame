@@ -55,9 +55,15 @@ public:
 
 	bool isActive() const { return active; }
 
-	void update() { for (auto& c : m_components) c->update(); }
+	void update()
+	{ 
+		for (auto& c : m_components) c->update();
+	}
 
-	void draw() { for (auto& c : m_components) c->draw(); }
+	void draw() 
+	{ 
+		for (auto& c : m_components) c->draw();
+	}
 
 	void disable() { active = false; }
 
@@ -102,9 +108,15 @@ private:
 class EntityManager
 {
 public:
-	void update() { for (auto& e : m_entities) e->update(); }
+	void update() 
+	{ 
+		for (auto& e : m_entities) e->update();
+	}
 
-	void draw() { for (auto& e : m_entities) e->draw(); }
+	void draw()
+	{ 
+		for (auto& e : m_entities) e->draw();
+	}
 
 	void refresh() 
 	{ 
@@ -120,8 +132,7 @@ public:
 
 		return *e;
 	}
+
 private:
 	std::vector<std::unique_ptr<Entity>> m_entities;
 };
-
-int Entity::lastEntityID = 0;

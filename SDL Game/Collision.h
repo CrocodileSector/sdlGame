@@ -27,7 +27,7 @@ struct Collision
 			if (AABB(*playerCol, *colliders[i]))
 			{
 				if(colliders[i]->GetTag().compare("waterTile") == 0)
-					playerCol->GetTransform()->GetVelocity().SetXY(-1.0f, -1.0f);
+					//playerCol->GetTransform()->GetVelocity().SetXY(-1.0f, -1.0f);
 
 				std::cout << "Collision detected between colliders: (1) " << playerCol->GetTag() << " and (2) " << colliders[i]->GetTag() << std::endl;
 			}

@@ -7,6 +7,7 @@
 #include <vector>
 #include <string>
 
+class TileComponent;
 class ColliderComponent;
 
 class Game
@@ -33,8 +34,6 @@ public:
 		else
 			m_colliders.push_back(col);
 	}
-
-	static void AddTile(int tileType, int x, int y);
 
 protected:
 	void init(const char* i_title, int i_x, int i_y, int i_w, int i_h, bool fullscreen);

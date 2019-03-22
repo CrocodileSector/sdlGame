@@ -1,15 +1,21 @@
 #pragma once
 
-#include "Game.h"
+#include <string>
+#include <vector>
 
 class Map
 {
 public:
 
-	Map();
+	Map(int ms, int ts);
 	~Map();
 
-	static void LoadMap(std::string mapFile, int sizeX, int sizeY);
+	void LoadMap(std::string path, int sizeX, int sizeY);
+	void AddTile(int srcX, int srcY, int xpos, int ypos, int tileType);
 
 private:
+	int mapScale;
+	int tileSize;
+	int scaledSize;
+
 };

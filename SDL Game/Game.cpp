@@ -18,11 +18,6 @@ Map* stage = nullptr;
 
 EntityManager manager;
 auto& player(manager.addEntity());
-auto& wall(manager.addEntity());
-
-auto& tile1(manager.addEntity());
-auto& tile2(manager.addEntity());
-auto& tile3(manager.addEntity());
 
 Game::Game()
 {
@@ -62,16 +57,13 @@ void Game::init(const char* i_title, int i_x, int i_y, int i_w, int i_h, bool fu
 
 		Game::rendererActive = true;
 
-		Map::LoadMap("Assets/map.map", 20, 25);
+		stage = new Map(3, 32);
+		stage->LoadMap("Assets/map3.map", 20, 25);
 
 		player.addComponent<TransformComponent>(10.0f, 10.0f, 32, 32, 2);
 		player.addComponent<SpriteComponent>("Assets/wolfie.png");
 		player.addComponent<KeyboardController>();
 		player.addComponent<ColliderComponent>("player");
-
-		wall.addComponent<TransformComponent>(250.0f, 300.0f, 300, 20, 1);
-		wall.addComponent<SpriteComponent>("Assets/dirt.png");
-		wall.addComponent<ColliderComponent>("wall");
 
 		m_state = Created;
 
@@ -171,10 +163,4 @@ void Game::quit()
 	}
 
 	SDL_Quit();
-}
-
-void Game::AddTile(int tileType, int x, int y)
-{
-	auto& tile(manager.addEntity());
-	tile.addComponent<TileComponent>(x, y, 32, 32, tileType);
 }

@@ -1,7 +1,5 @@
 ﻿  Game.cpp
-c:\users\vlad\source\repos\sdl game\sdl game\collision.h(5): warning C4099: 'Collision': type name first seen using 'class' now seen using 'struct'
-  c:\users\vlad\source\repos\sdl game\sdl game\collision.h(4): note: see declaration of 'Collision'
-c:\users\vlad\source\repos\sdl game\sdl game\tilecomponent.h(53): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\vlad\source\repos\sdl game\sdl game\tilecomponent.h(54): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\vlad\source\repos\sdl game\sdl game\collidercomponent.h(26): warning C4715: 'ColliderComponent::GetTransform': not all control paths return a value
-  SDL Game.vcxproj -> C:\Users\Vlad\source\repos\SDL Game\x64\Debug\SDL Game.exe
+c:\users\vlmuntea\source\repos\sdlgame\sdl game\collision.h(5): warning C4099: 'Collision': type name first seen using 'class' now seen using 'struct'
+  c:\users\vlmuntea\source\repos\sdlgame\sdl game\collision.h(4): note: see declaration of 'Collision'
+  SDL Game.vcxproj -> C:\Users\vlmuntea\source\repos\sdlGame\x64\Debug\SDL Game.exe
+  SDL Game.vcxproj -> C:\Users\vlmuntea\source\repos\sdlGame\x64\Debug\SDL Game.pdb (Partial PDB)
